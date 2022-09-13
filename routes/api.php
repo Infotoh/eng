@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\Api\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', function () {
-    return \App\Models\Consultation::all();
-});
+Route::get('/Consultation', [ConsultationController::class, 'index']);
+
+Route::post('login', [AuthController::class,'login']);
+Route::post('register', [AuthController::class,'register']);
+Route::post('/user_update', [AuthController::class,'update_user']);
