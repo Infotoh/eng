@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
             $table->integer('number');
-            $table->integer('number2');
+            $table->integer('number2')->nullable();
             $table->string('name');
-            $table->integer('age');
-            $table->string('gender_type');
+            $table->integer('age')->nullable();
+            $table->string('gender_type')->nullable();
             $table->string('qualification');
             $table->timestamps();
         });
