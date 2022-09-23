@@ -10,7 +10,14 @@ class TriningController extends Controller
     //
     public function index()
     {
-        $data = Training::all();
+        $data = \App\Models\Training::create([
+            'number' => 21111222,
+            'number2' => 9999,
+            'name' => 'training ',
+            'age' => 12,
+            'gender_type' => 'mail',
+            'qualification' => 'qualification ',
+        ]);
 
         return response()->api($data);
     }
