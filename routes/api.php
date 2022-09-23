@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/Trining', [TriningController::class, 'index']);
 Route::get('/Consultation', [ConsultationController::class, 'index']);
-
+Route::post('/Consultation', [ConsultationController::class, 'index']);
 Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
 Route::post('/user_update', [AuthController::class,'update_user']);

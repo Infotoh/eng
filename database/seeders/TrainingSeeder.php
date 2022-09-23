@@ -21,9 +21,6 @@ class TrainingSeeder extends Seeder
             'age' => 12,
             'gender_type' => 'mail',
             'qualification' => 'qualification ',
-
-
-
         ]);
     }
 }

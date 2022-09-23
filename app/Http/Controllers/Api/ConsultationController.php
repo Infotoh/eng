@@ -8,9 +8,19 @@ use App\Models\Consultation;
 
 class ConsultationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Consultation::all();
+        $validator = Validator::make($request->all(), [
+            'number' => ['required'],
+            'name' => ['required'],
+            'consultion' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->api([], 1, $validator->errors()->first());
+        }
+
+        $data = Consultation::create($request->all());
 
         return response()->api($data);
     }
