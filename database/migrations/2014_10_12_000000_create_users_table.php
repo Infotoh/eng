@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image')->default('user_images/default.png');
             $table->string('code')->default('0000');
             $table->double('status')->default(false);
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

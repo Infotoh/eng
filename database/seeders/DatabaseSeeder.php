@@ -14,13 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(LaratrustSeeder::class);
+        $this->call(CategoreySeeder::class);
+        $this->call(AdminsTableSeeder::class);
         $this->call(ConsultationSeeder::class);
         $this->call(TrainingSeeder::class);
-                // \App\Models\User::factory(10)->create();
+        $this->call(UserSeeder::class);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-    }
-}
+    }//end of run
+
+}//end of class
