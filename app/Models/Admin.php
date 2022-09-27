@@ -27,5 +27,11 @@ class Admin extends Authenticatable
         });
 
     }// end of scopeWhenRoleId
+
+    public function hasImage()
+    {
+        return $this->image != null;
+
+    }// end of hasImage
     
 }//end of model
