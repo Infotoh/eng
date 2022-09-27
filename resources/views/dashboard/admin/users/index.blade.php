@@ -65,6 +65,7 @@
                                             </label>
                                         </div>
                                     </th>
+                                    <th>@lang('site.DT_RowIndex')</th>
                                     <th>@lang('users.name')</th>
                                     <th>@lang('users.phone')</th>
                                     <th>@lang('users.code')</th>
@@ -107,6 +108,7 @@
             },
             columns: [
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
+                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'username', name: 'username'},
                 {data: 'phone', name: 'phone'},
                 {data: 'code', name: 'code'},
