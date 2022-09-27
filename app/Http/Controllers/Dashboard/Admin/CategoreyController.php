@@ -30,11 +30,11 @@ class CategoreyController extends Controller
         $categoreys = Categorey::query();
 
         return DataTables::of($categoreys)
-            ->addColumn('record_select', 'admin.admins.data_table.record_select')
-            ->editColumn('created_at', function (User $admin) {
-                return $admin->created_at->format('Y-m-d');
+            ->addColumn('record_select', 'dashboard.admin.categoreys.data_table.record_select')
+            ->editColumn('created_at', function (Categorey $categorey) {
+                return $categorey->created_at->format('Y-m-d');
             })
-            ->addColumn('actions', 'admin.admins.data_table.actions')
+            ->addColumn('actions', 'dashboard.admin.categoreys.data_table.actions')
             ->rawColumns(['record_select', 'roles', 'actions'])
             ->addIndexColumn()
             ->toJson();

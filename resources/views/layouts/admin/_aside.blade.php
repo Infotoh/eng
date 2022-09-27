@@ -6,7 +6,7 @@
   border-radius: 10px;
 }">
     <div class="app-sidebar__user">
-        <img class="app-sidebar__user-avatar" src="{{ auth('admin')->user()->image_path }}" alt="User Image">
+        <img class="app-sidebar__user-avatar" src="{{ asset('admin_assets/images/default.png') }}" alt="User Image">
         <div>
             <p class="app-sidebar__user-name">{{ auth('admin')->user()->name }}</p>
             <p class="app-sidebar__user-designation">{{ auth('admin')->user()->roles->first()->name }}</p>
@@ -16,7 +16,7 @@
     <ul class="app-menu">
 
         <li>
-            <a class="app-menu__item {{ request()->is('*/*') ? 'active' : '' }}" href="{{ route('dashboard.admin.welcome') }}">
+            <a class="app-menu__item" href="{{ route('dashboard.admin.welcome') }}">
                 <i class="app-menu__icon fa fa-home"></i> 
                 <span class="app-menu__label">@lang('site.home')</span>
             </a>
@@ -58,7 +58,6 @@
 
         @endif
 
-
         {{--profile--}}
         <li class="treeview {{ request()->is('*profile*') || request()->is('*password*')  ? 'is-expanded' : '' }}"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-circle"></i><span class="app-menu__label">@lang('users.profile')</span><i class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">
@@ -66,6 +65,40 @@
                 <li><a class="treeview-item" href="{{ route('dashboard.admin.profile.password.edit') }}"><i class="icon fa fa-circle-o"></i>@lang('users.change_password')</a></li>
             </ul>
         </li>
+
+        {{--categorys--}}
+        @if (auth('admin')->user()->hasPermission('read_categoreys'))
+
+            {{--categorys--}}
+            <li class="treeview {{ request()->is('*categorys*')  ? 'is-expanded' : '' }}">
+                <a class="app-menu__item" href="#" data-toggle="treeview">
+                <i class="app-menu__icon fa fa-user-circle"></i><span class="app-menu__label">@lang('categoreys.categoreys')</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                <ul class="treeview-menu">
+                    @php
+                        $categoreys = \App\Models\Categorey::all();
+                    @endphp
+
+                    <li>
+                        <a class="treeview-item" href="{{ route('dashboard.admin.categorys.index') }}">
+                        <i class="icon fa fa-circle-o"></i>
+                        @lang('categoreys.all')</a>
+                    </li>
+
+                    @foreach ($categoreys as $category)
+
+                        <li>
+                            <a class="treeview-item" href="{{ route('dashboard.admin.categorys.index') }}">
+                                <i class="icon fa fa-circle-o"></i>
+                                {{ $category->name }}
+                            </a>
+                        </li>
+                        
+                    @endforeach
+
+                </ul>
+            </li>
+
+        @endif
 
     </ul>
 </aside>

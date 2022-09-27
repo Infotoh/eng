@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('categoreys', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('status')->default(false);
             $table->string('logo')->default('categorys_logo/default.png');
             $table->timestamps();
         });
