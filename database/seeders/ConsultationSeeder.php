@@ -15,9 +15,10 @@ class ConsultationSeeder extends Seeder
     public function run()
     {
         \App\Models\Consultation::create([
-            'number'     => 2222,
-            'name'       => 'name Consultation',
-            'consultion' => '22consultion consultion consultion consultion',
+            'number'       => 2222,
+            'name'         => 'name Consultation',
+            'consultion'   => '22consultion consultion consultion consultion',
+            'categorey_id' => 1,
         ]);
 
     }//end of run

@@ -5,35 +5,43 @@ namespace App\Http\Controllers\Dashboard\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Consultation;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class ConsultationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function __construct()
+    {
+        $this->middleware('permission:read_consultations')->only(['index']);
+        $this->middleware('permission:create_consultations')->only(['create', 'store']);
+        $this->middleware('permission:update_consultations')->only(['edit', 'update']);
+        $this->middleware('permission:delete_consultations')->only(['delete', 'bulk_delete']);
+
+    }// end of __construct
+
     public function index()
     {
-        //
-    }
+        return view('dashboard.admin.consultations.index');
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    }// end of index
+
+    public function data()
     {
-        //
-    }
+        $consultations = Consultation::all();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+        return DataTables::of($consultations)
+            ->addColumn('record_select', 'dashboard.admin.consultations.data_table.record_select')
+            ->editColumn('created_at', function (Consultation $consultation) {
+                return $consultation->created_at->format('Y-m-d');
+            })
+            ->addColumn('actions', 'dashboard.admin.consultations.data_table.actions')
+            ->rawColumns(['record_select', 'roles', 'actions'])
+            ->addIndexColumn()
+            ->toJson();
+
+    }// end of data
+
+
     public function store(Request $request)
     {
         //

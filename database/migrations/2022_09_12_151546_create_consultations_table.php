@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('number');
             $table->string('name');
             $table->text('consultion');
+
+            $table->foreignIdFor(\App\Models\Categorey::class);
             $table->timestamps();
         });
     }
