@@ -73,9 +73,10 @@
     <link rel="stylesheet" href="{{ asset('admin_assets/css/custom.css')}}">
 
     <style>
-        @if (request()->segment(2) == 'reports')
-            .dataTables_filter, .dataTables_info { display: none; }
-        @endif
+        th,
+        td {
+            text-align: center;
+        }
         .has-error .select2-selection {
             border-color: rgb(185, 74, 72) !important;
         }

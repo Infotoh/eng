@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('consultations', function (Blueprint $table) {
+        Schema::create('replies', function (Blueprint $table) {
             $table->id();
-            $table->integer('number');
-            $table->string('name');
-            $table->text('consultion');
-
+            $table->text('repli');
+            
+            $table->foreignIdFor(\App\Models\Consultation::class);
             $table->foreignIdFor(\App\Models\Categorey::class);
-            $table->foreignIdFor(\App\Models\User::class);
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('consultations');
+        Schema::dropIfExists('replies');
     }
 };

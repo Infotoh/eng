@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+*@extends('layouts.admin.app')
 
 @section('content')
 
@@ -59,6 +59,7 @@
                                     <th>@lang('consultations.name')</th>
                                     <th>@lang('consultations.consultations')</th>
                                     <th>@lang('consultations.number')</th>
+                                    <th>@lang('categoreys.categoreys')</th>
                                     <th>@lang('site.created_at')</th>
                                     <th>@lang('site.action')</th>
                                 </tr>
@@ -101,6 +102,7 @@
                 {data: 'name', name: 'name'},
                 {data: 'consultion', name: 'consultion'},
                 {data: 'number', name: 'number'},
+                {data: 'categorey', name: 'categorey'},
                 {data: 'created_at', name: 'created_at', searchable: false},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '20%'},
             ],

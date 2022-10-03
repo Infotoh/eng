@@ -19,6 +19,7 @@ class ConsultationSeeder extends Seeder
             'name'         => 'name Consultation',
             'consultion'   => '22consultion consultion consultion consultion',
             'categorey_id' => 1,
+            'user_id'      => 1,
         ]);
 
     }//end of run

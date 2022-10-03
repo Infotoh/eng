@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Consultation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
 class ConsultationController extends Controller
@@ -33,6 +34,12 @@ class ConsultationController extends Controller
             ->addColumn('record_select', 'dashboard.admin.consultations.data_table.record_select')
             ->editColumn('created_at', function (Consultation $consultation) {
                 return $consultation->created_at->format('Y-m-d');
+            })
+            ->editColumn('consultion', function (Consultation $consultation) {
+                return Str::words($consultation->consultion, 5, '....');
+            })
+            ->addColumn('categorey', function (Consultation $consultation) {
+                return $consultation->categorey->name;
             })
             ->addColumn('actions', 'dashboard.admin.consultations.data_table.actions')
             ->rawColumns(['record_select', 'roles', 'actions'])
