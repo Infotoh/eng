@@ -15,12 +15,14 @@ class TrainingSeeder extends Seeder
     public function run()
     {
         \App\Models\Training::create([
-            'number' => 21111222,
-            'number2' => 9999,
-            'name' => 'training ',
-            'age' => 12,
-            'gender_type' => 'mail',
-            'qualification' => 'qualification ',
+            'number'        => 21111222,
+            'number2'       => 9999,
+            'name'          => 'training',
+            'age'           => 12,
+            'gender_type'   => 'mail',
+            'qualification' => 'qualification',
         ]);
-    }
-}
+
+    }//end of run
+
+}//end of class
