@@ -7,6 +7,7 @@ return [
     'serial' => 'تسلسل',
 
     'add' => 'اضافه',
+    'reply' => 'رد',
     'edit' => 'تعديل',
     'delete' => 'حذف',
     'action' => 'إختر',

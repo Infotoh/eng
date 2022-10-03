@@ -1,4 +1,4 @@
-*@extends('layouts.admin.app')
+@extends('layouts.admin.app')
 
 @section('content')
 
@@ -16,18 +16,6 @@
         <div class="col-md-12">
 
             <div class="tile shadow">
-
-                <div class="row mb-2">
-
-                    <div class="col-md-12">
-
-                        @if (auth()->user()->hasPermission('read_consultations'))
-                            <a href="{{ route('dashboard.admin.consultations.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.create')</a>
-                        @endif
-
-                    </div>
-
-                </div><!-- end of row -->
 
                 <div class="row">
 

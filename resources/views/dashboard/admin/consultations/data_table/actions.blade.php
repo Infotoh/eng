@@ -17,3 +17,11 @@
         </button>
     </form>
 @endif
+
+@if (auth()->user()->hasPermission('read_consultations'))
+    <a href="{{ route('dashboard.admin.consultations.edit', $id) }}" class="btn btn-primary btn-sm"
+        data-html="true" data-placement="right" title="@lang('site.reply')">
+        <i class="fa fa-reply"></i> 
+        {{-- @lang('site.edit') --}}
+    </a>
+@endif
