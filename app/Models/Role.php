@@ -6,5 +6,6 @@ use Laratrust\Models\LaratrustRole;
 
 class Role extends LaratrustRole
 {
-    public $guarded = [];
-}
+    protected $guarded = [];
+
+}//end of modle
