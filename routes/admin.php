@@ -51,10 +51,10 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
     Route::resource('users', UserController::class)->except(['show']);
 
     //orders routes
-    Route::resource('orders', OrderController::class);
+    // Route::resource('orders', OrderController::class);
 
-    Route::get('/settings/social_links', [SettingController::class, 'social_links'])->name('settings.social_links');
-    Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
+    // Route::get('/settings/social_links', [SettingController::class, 'social_links'])->name('settings.social_links');
+    // Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
 
 
 }); //end of dashboard routes
