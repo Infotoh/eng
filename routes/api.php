@@ -21,9 +21,17 @@ use App\Http\Controllers\Api\TriningController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::group(['middleware' => 'auth:sanctum'], function(){
+    Route::get('/Consultation', [ConsultationController::class, 'index']);
+    Route::get('/Consultation/{id}', [ConsultationController::class,'show']);
+    Route::post('/Consultation-store/', [ConsultationController::class,'store2']);
+});
+
+
 Route::post('/Trining', [TriningController::class, 'index']);
-Route::get('/Consultation', [ConsultationController::class, 'index']);
-Route::post('/Consultation', [ConsultationController::class, 'index']);
+Route::post('/Consultation', [ConsultationController::class, 'store']);
+Route::post('/user_update', [AuthController::class,'update_user']);
 Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
-Route::post('/user_update', [AuthController::class,'update_user']);

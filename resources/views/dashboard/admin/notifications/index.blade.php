@@ -3,12 +3,12 @@
 @section('content')
 
     <div>
-        <h2>@lang('categoreys.categoreys')</h2>
+        <h2>@lang('consultations.notifications')</h2>
     </div>
 
     <ul class="breadcrumb mt-2">
         <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.welcome') }}">@lang('site.home')</a></li>
-        <li class="breadcrumb-item">@lang('categoreys.categoreys')  </li>
+        <li class="breadcrumb-item">@lang('consultations.notifications')</li>
     </ul>
 
     <div class="row">
@@ -16,27 +16,6 @@
         <div class="col-md-12">
 
             <div class="tile shadow">
-
-                <div class="row mb-2">
-
-                    <div class="col-md-12">
-
-                        @if (auth()->user()->hasPermission('read_categorys'))
-                            <a href="{{ route('dashboard.admin.categorys.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.create')</a>
-                        @endif
-
-                        @if (auth()->user()->hasPermission('delete_categorys'))
-                            <form method="post" action="{{ route('dashboard.admin.categorys.bulk_delete') }}" style="display: inline-block;">
-                                @csrf
-                                @method('delete')
-                                <input type="hidden" name="record_ids" id="record-ids">
-                                <button type="submit" class="btn btn-danger" id="bulk-delete" disabled="true"><i class="fa fa-trash"></i> @lang('site.bulk_delete')</button>
-                            </form><!-- end of form -->
-                        @endif
-
-                    </div>
-
-                </div><!-- end of row -->
 
                 <div class="row">
 
@@ -54,7 +33,7 @@
 
                         <div class="table-responsive">
 
-                            <table class="table datatable" id="categorys-table" style="width: 100%;">
+                            <table class="table datatable" id="data-table" style="width: 100%;">
                                 <thead>
                                 <tr>
                                     <th>
@@ -93,7 +72,7 @@
 
     <script>
 
-        let categorysTable = $('#categorys-table').DataTable({
+        let categorysTable = $('#data-table').DataTable({
             dom: "tiplr",
             scrollY: '500px',
             sScrollX: "100%",
@@ -104,7 +83,7 @@
                 "url": "{{ asset('admin_assets/datatable-lang/' . app()->getLocale() . '.json') }}"
             },
             ajax: {
-                url: '{{ route('dashboard.admin.categorys.data',['status' => request()->get('status')]) }}',
+                url: '{{ route('dashboard.admin.notifications.data') }}',
             },
             columns: [
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
