@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\Admin\CategoreyRequest;
 use Yajra\DataTables\DataTables;
 use App\Models\Categorey;
+use App\Models\Consultation;
 use Illuminate\Http\Request;
 
 class CategoreyController extends Controller
@@ -25,19 +26,30 @@ class CategoreyController extends Controller
 
     }//end of index
 
-    public function data()
+    public function data(Request $request)
     {
-        $categoreys = Categorey::query();
+        
+        $query = Consultation::query();
+        $query->when($request->status,function($q) use ($request){
+            return $q->where('categoreys_id',$request->status);
+        });
+        
+        $categoreys = $query->get();
 
         return DataTables::of($categoreys)
+        
+            ->addColumn('number', function(Consultation $consulation) {return $consulation->number; })
+            ->addColumn('name', function(Consultation $consulation) {return $consulation->name; })
+            ->addColumn('consolation', function(Consultation $consulation) {return $consulation->consultion; })
             ->addColumn('record_select', 'dashboard.admin.categoreys.data_table.record_select')
-            ->editColumn('created_at', function (Categorey $categorey) {
-                return $categorey->created_at->format('Y-m-d');
-            })
+            // ->editColumn('created_at', function (Categorey $categorey) {
+            //     return $categorey->created_at->format('Y-m-d');
+            // })
             ->addColumn('actions', 'dashboard.admin.categoreys.data_table.actions')
-            ->rawColumns(['record_select', 'roles', 'actions'])
-            ->addIndexColumn()
+            ->rawColumns(['actions','record_select'])
+            ->setRowId('id')
             ->toJson();
+
 
     }// end of data
 
@@ -58,26 +70,33 @@ class CategoreyController extends Controller
     }//end of store
 
     
-    public function show(Categorey $categorey)
+    public function show($id)
     {
+        $category = Consultation::findOrFail($id);
         return view('dashboard.admin.categoreys.show', compact('categorey'));
 
     }//end of show
 
     
-    public function edit(Categorey $categorey)
+    public function edit($id)
     {
-        return view('dashboard.admin.categoreys.edit', compact('categorey'));
+        $category = Consultation::findOrFail($id);
+        return view('dashboard.admin.categoreys.edit', compact('category'));
 
     }//en of edit
 
 
-    public function update(Request $request, CategoreyRequest $categorey)
+    public function update(Request $request,$id)
     {
-        $categorey->update($request->validated());
+        $category = Consultation::findOrFail($id);
+        $request->validate([
+            'comment' => 'required|string',
+        ]);
+        
+        $category->update($request->only('comment'));
 
         session()->flash('success', __('site.updated_successfully'));
-        return redirect()->route('dashboard.admin.categoreys.index');
+        return redirect()->back();
 
     }//end of update
 

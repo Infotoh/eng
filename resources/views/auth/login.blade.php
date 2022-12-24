@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="ltr">
 <head>
-    <meta name="description" content="">
-
+  
     <title>{{ config('app.name') }}</title>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin_assets/css/main-teal.css') }}" media="all">
+    <link rel="stylesheet" type="text/css"  href="{{ asset('admin_assets/css/main-teal.css') }}" >
 
     <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin_assets/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css"  href="{{ asset('admin_assets/css/font-awesome.min.css') }}">
 
     @if (app()->getLocale() == 'ar')
-
+    <!-- Main CSS-->
+    
         {{--google font--}}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo:400,600&display=swap">
 
@@ -40,7 +38,6 @@
             }
         </style>
     @endif
-
 </head>
 <body>
     <section class="material-half-bg">

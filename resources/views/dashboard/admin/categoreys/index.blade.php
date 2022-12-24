@@ -8,7 +8,7 @@
 
     <ul class="breadcrumb mt-2">
         <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.welcome') }}">@lang('site.home')</a></li>
-        <li class="breadcrumb-item">@lang('categoreys.categoreys')</li>
+        <li class="breadcrumb-item">@lang('categoreys.categoreys')  </li>
     </ul>
 
     <div class="row">
@@ -65,8 +65,9 @@
                                             </label>
                                         </div>
                                     </th>
+                                    <th>@lang('categoreys.number')</th>
                                     <th>@lang('categoreys.name')</th>
-                                    <th>@lang('site.created_at')</th>
+                                    <th>@lang('categoreys.consulation')</th>
                                     <th>@lang('site.action')</th>
                                 </tr>
                                 </thead>
@@ -101,14 +102,14 @@
                 "url": "{{ asset('admin_assets/datatable-lang/' . app()->getLocale() . '.json') }}"
             },
             ajax: {
-                url: '{{ route('dashboard.admin.categorys.data') }}',
+                url: '{{ route('dashboard.admin.categorys.data',['status' => request()->get('status')]) }}',
             },
             columns: [
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
+                {data: 'number', name: 'number'},
                 {data: 'name', name: 'name'},
-                // {data: 'country', name: 'country'},
-                // {data: 'admin', name: 'admin'},
-                {data: 'created_at', name: 'created_at', searchable: false},
+                {data: 'consultion', name: 'consultion'},
+                // {data: 'created_at', name: 'created_at', searchable: false},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '20%'},
             ],
             order: [[2, 'desc']],

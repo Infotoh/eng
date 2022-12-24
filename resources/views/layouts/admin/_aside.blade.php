@@ -87,7 +87,7 @@
                     @foreach ($categoreys as $category)
 
                         <li>
-                            <a class="treeview-item" href="{{ route('dashboard.admin.categorys.index') }}">
+                            <a class="treeview-item" href="{{ route('dashboard.admin.categorys.index',['status' => $category->id ]) }}">
                                 <i class="icon fa fa-circle-o"></i>
                                 {{ $category->name }}
                             </a>
