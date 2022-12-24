@@ -37,7 +37,7 @@
                     {{--name--}}
                     <div class="form-group">
                         <label>@lang('categoreys.consulation')<span class="text-danger">*</span></label>
-                        <textarea type="text" name="consulation" class="form-control @error('consulation') is-invalid @enderror"  required autofocus  readonly>{{$category->consultion  }}</textarea>
+                        <textarea type="text" name="consulation" rows="5" class="form-control @error('consulation') is-invalid @enderror"  required autofocus  readonly>{{$category->consultion  }}</textarea>
 
                     </div>
                     

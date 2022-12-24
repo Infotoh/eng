@@ -156,5 +156,10 @@ class AuthController extends Controller
         return response()->api($user);
 
     }//end of update user
+    
+    
+    public function logout(Request $request){
+    auth()->user()->tokens()->delete();
+}
 
 }//end of controller

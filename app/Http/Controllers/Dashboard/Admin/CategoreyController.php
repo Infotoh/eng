@@ -8,6 +8,8 @@ use Yajra\DataTables\DataTables;
 use App\Models\Categorey;
 use App\Models\Consultation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class CategoreyController extends Controller
 {
@@ -40,11 +42,16 @@ class CategoreyController extends Controller
         
             ->addColumn('number', function(Consultation $consulation) {return $consulation->number; })
             ->addColumn('name', function(Consultation $consulation) {return $consulation->name; })
-            ->addColumn('consolation', function(Consultation $consulation) {return $consulation->consultion; })
             ->addColumn('record_select', 'dashboard.admin.categoreys.data_table.record_select')
-            // ->editColumn('created_at', function (Categorey $categorey) {
-            //     return $categorey->created_at->format('Y-m-d');
-            // })
+            ->editColumn('created_at', function (Consultation $consultation) {
+                return $consultation->created_at->format('Y-m-d');
+            })
+            ->editColumn('consultion', function (Consultation $consultation) {
+                return Str::words($consultation->consultion, 5, '....');
+            })
+            ->addColumn('categorey', function (Consultation $consultation) {
+                return $consultation->categorey->name ?? 'لاتوجد';
+            })
             ->addColumn('actions', 'dashboard.admin.categoreys.data_table.actions')
             ->rawColumns(['actions','record_select'])
             ->setRowId('id')

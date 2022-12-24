@@ -68,6 +68,8 @@
                                     <th>@lang('categoreys.number')</th>
                                     <th>@lang('categoreys.name')</th>
                                     <th>@lang('categoreys.consulation')</th>
+                                    <th>@lang('categoreys.categoreys')</th>
+                                    <th>@lang('site.created_at')</th>
                                     <th>@lang('site.action')</th>
                                 </tr>
                                 </thead>
@@ -109,7 +111,8 @@
                 {data: 'number', name: 'number'},
                 {data: 'name', name: 'name'},
                 {data: 'consultion', name: 'consultion'},
-                // {data: 'created_at', name: 'created_at', searchable: false},
+                {data: 'categorey', name: 'categorey'},
+                {data: 'created_at', name: 'created_at', searchable: false},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '20%'},
             ],
             order: [[2, 'desc']],

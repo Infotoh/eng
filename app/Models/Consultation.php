@@ -13,7 +13,7 @@ class Consultation extends Model
 
     public function categorey()
     {
-        return $this->belongsTo(Categorey::class);
+        return $this->belongsTo(Categorey::class,'categoreys_id');
 
     }//end of hasMany categorey
 

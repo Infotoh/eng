@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\CategoreyController;
 use App\Http\Controllers\Dashboard\Admin\SettingController;
 use App\Http\Controllers\Dashboard\Admin\WelcomeController;
+use App\Http\Controllers\Dashboard\Admin\NotificationController;
 
 
 Route::get('/dashboard/login', [AuthController::class,'index'])->name('dashboard.login.index');
@@ -50,12 +51,17 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
     Route::delete('/users/bulk_delete', [UserController::class, 'bulkDelete'])->name('users.bulk_delete');
     Route::resource('users', UserController::class)->except(['show']);
 
-    //orders routes
-    Route::resource('orders', OrderController::class);
+    // //orders routes
+    // Route::resource('orders', OrderController::class);
 
-    Route::get('/settings/social_links', [SettingController::class, 'social_links'])->name('settings.social_links');
-    Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
+    // Route::get('/settings/social_links', [SettingController::class, 'social_links'])->name('settings.social_links');
+    // Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
+    
+    
+    Route::get('/notifications/data', [NotificationController::class, 'data'])->name('notifications.data');
+    Route::get('/notifications',[NotificationController::class, 'index'])->name('notifications.index');
 
+        // return view('dashboard.admin.notifications.index');
 
 }); //end of dashboard routes
 
