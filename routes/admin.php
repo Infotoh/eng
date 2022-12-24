@@ -61,7 +61,7 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
     Route::get('/notifications/data', [NotificationController::class, 'data'])->name('notifications.data');
     Route::get('/notifications',[NotificationController::class, 'index'])->name('notifications.index');
 
-        // return view('dashboard.admin.notifications.index');
+    // return view('dashboard.admin.notifications.index');
 
 }); //end of dashboard routes
 
