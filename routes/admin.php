@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\Admin\Auth\AuthController;
 use App\Http\Controllers\Dashboard\Admin\Auth\ProfileController;
 use App\Http\Controllers\Dashboard\Admin\AdminController;
+use App\Http\Controllers\Dashboard\Admin\ConsultationController;
 use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\CategoreyController;
 use App\Http\Controllers\Dashboard\Admin\SettingController;
@@ -33,6 +34,11 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware(['auth:ad
     Route::get('/roles/data', [AdminController::class, 'data'])->name('roles.data');
     Route::delete('/roles/bulk_delete', [AdminController::class, 'bulkDelete'])->name('roles.bulk_delete');
     Route::resource('roles', AdminController::class)->except(['show']);
+
+    //consultations routes
+    Route::get('/consultations/data', [ConsultationController::class, 'data'])->name('consultations.data');
+    Route::delete('/consultations/bulk_delete', [ConsultationController::class, 'bulkDelete'])->name('consultations.bulk_delete');
+    Route::resource('consultations', ConsultationController::class)->except(['show']);
 
     //categorys routes
     Route::get('/categorys/data', [CategoreyController::class, 'data'])->name('categorys.data');

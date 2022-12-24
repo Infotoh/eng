@@ -58,6 +58,18 @@
 
         @endif
 
+        {{--consultations--}}
+        @if (auth('admin')->user()->hasPermission('read_consultations'))
+
+            <li>
+                <a class="app-menu__item {{ request()->segment(3) == 'consultations' ? 'active' : '' }}" href="{{ route('dashboard.admin.consultations.index') }}">
+                    <i class="app-menu__icon fa fa-users"></i> 
+                    <span class="app-menu__label">@lang('consultations.consultations')</span>
+                </a>
+            </li>
+
+        @endif
+
         {{--profile--}}
         <li class="treeview {{ request()->is('*profile*') || request()->is('*password*')  ? 'is-expanded' : '' }}"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-circle"></i><span class="app-menu__label">@lang('users.profile')</span><i class="treeview-indicator fa fa-angle-right"></i></a>
             <ul class="treeview-menu">

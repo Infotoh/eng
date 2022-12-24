@@ -17,6 +17,7 @@ return [
             'users'        => 'c,r,u,d',
             'admins'       => 'c,r,u,d',
             'categoreys'   => 'c,r,u,d',
+            'consultations'=> 'c,r,u,d',
         ],
         'admin' => [],
         'user' => [],

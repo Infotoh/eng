@@ -21,6 +21,10 @@ return new class extends Migration
             $table->integer('age')->nullable();
             $table->string('gender_type')->nullable();
             $table->string('qualification');
+
+            $table->foreignIdFor(\App\Models\Categorey::class);
+            $table->foreignIdFor(\App\Models\User::class);
+            
             $table->timestamps();
         });
     }

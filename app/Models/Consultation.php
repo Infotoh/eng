@@ -10,4 +10,11 @@ class Consultation extends Model
     use HasFactory;
 
     protected $guarded = [];
-}
+
+    public function categorey()
+    {
+        return $this->belongsTo(Categorey::class);
+
+    }//end of hasMany categorey
+
+}//end of model
