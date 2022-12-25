@@ -8,6 +8,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -156,10 +157,14 @@ class AuthController extends Controller
         return response()->api($user);
 
     }//end of update user
-    
-    
+
+
     public function logout(Request $request){
-    auth()->user()->tokens()->delete();
-}
+        auth()->user()->tokens()->delete();
+        return response()->json([
+            'status' => true,
+            'data' => null,
+        ],200);
+    }
 
 }//end of controller

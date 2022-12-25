@@ -26,5 +26,5 @@ class UserSeeder extends Seeder
         }//end of for each
 
     }//en of run
-    
+
 }//end of class

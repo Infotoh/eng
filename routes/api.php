@@ -26,7 +26,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('/Consultation', [ConsultationController::class, 'index']);
     Route::get('/Consultation/{id}', [ConsultationController::class,'show']);
-    Route::post('/Consultation-store/', [ConsultationController::class,'store2']);
+    Route::post('logout', [AuthController::class,'logout']);
+    Route::get('notifications', [ConsultationController::class,'notifications']);
+    Route::get('/categories', [ConsultationController::class, 'categories']);
 });
 
 
