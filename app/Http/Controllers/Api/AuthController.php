@@ -16,6 +16,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'phone'    => ['required','numeric','min:9'],
+            'device_token' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -32,6 +33,8 @@ class AuthController extends Controller
             $data['user']  = new UserResource($user);
             $data['token'] = $user->createToken('my-app-token')->plainTextToken;
 
+            $user = User::find(auth()->id());
+            $user->update(['device_token' => $request->device_token]);
             return response()->api($data);
 
         } else {

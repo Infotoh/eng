@@ -30,16 +30,16 @@ class CategoreyController extends Controller
 
     public function data(Request $request)
     {
-        
+
         $query = Consultation::query();
         $query->when($request->status,function($q) use ($request){
             return $q->where('categoreys_id',$request->status);
         });
-        
+
         $categoreys = $query->get();
 
         return DataTables::of($categoreys)
-        
+
             ->addColumn('number', function(Consultation $consulation) {return $consulation->number; })
             ->addColumn('name', function(Consultation $consulation) {return $consulation->name; })
             ->addColumn('record_select', 'dashboard.admin.categoreys.data_table.record_select')
@@ -76,7 +76,7 @@ class CategoreyController extends Controller
 
     }//end of store
 
-    
+
     public function show($id)
     {
         $category = Consultation::findOrFail($id);
@@ -84,7 +84,7 @@ class CategoreyController extends Controller
 
     }//end of show
 
-    
+
     public function edit($id)
     {
         $category = Consultation::findOrFail($id);
@@ -99,9 +99,14 @@ class CategoreyController extends Controller
         $request->validate([
             'comment' => 'required|string',
         ]);
-        
+
+
         $category->update($request->only('comment'));
 
+        if($category->user->device_token != null){
+            $token[0] = $category->user->device_token;
+            fcmTopic(trans('site.title'), $category->comment, $token);
+        }
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->back();
 

@@ -46,8 +46,9 @@ return [
     'total'       => 'Total',
     'top'         => 'Top',
     'DT_RowIndex' => '#',
-    
+
     'start_date' => 'Start Date',
     'end_date'   => 'end Date',
+    'title' => 'consulation comment',
 
 ];

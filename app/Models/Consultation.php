@@ -15,6 +15,10 @@ class Consultation extends Model
     {
         return $this->belongsTo(Categorey::class,'categoreys_id');
 
-    }//end of hasMany categorey
+    }
 
-}//end of model
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+}

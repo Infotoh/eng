@@ -34,7 +34,7 @@ class ConsultationController extends Controller
 
    public function store(Request $request)
     {
-        
+
         $validator = Validator::make($request->all(), [
             'number' => ['required','numeric'],
             'name' => ['required'],
@@ -88,7 +88,7 @@ class ConsultationController extends Controller
         ],200);
     }
 
-
+    
 
 
 }

@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "guzzlehttp/guzzle": "^7.2",
+        "kawankoding/laravel-fcm": "^0.2.0",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
@@ -33,7 +34,8 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": ["app/helper.php"]
     },
     "scripts": {
         "post-autoload-dump": [
