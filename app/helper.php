@@ -13,7 +13,7 @@ if (!function_exists('fcmTopic')) {
             ->timeToLive(0)
             ->notification([
                 'title' => $title,
-                'body' => $body,
+                // 'body' => $body,
             ])->send();
     }
 }
