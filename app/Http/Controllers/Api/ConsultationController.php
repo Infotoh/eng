@@ -46,10 +46,9 @@ class ConsultationController extends Controller
             return response()->api([], 1, $validator->errors()->first());
         }
 
-        return auth('api')->id();
         $request->merge(['user_id' => auth('api')->id()]);
-
         Consultation::create($request->except('comment'));
+
 
         return response()->json([
             'status' => true,
