@@ -104,7 +104,7 @@ class CategoreyController extends Controller
             $category->update($request->only('comment'));
             if($category->user->device_token != null){
                 $token[0] = $category->user->device_token;
-                fcmTopic(trans('site.title'), $category->comment, $token);
+                fcmTopic($token,trans('site.title'),$category->comment);
             }
         }else{
             $category->update($request->only('comment'));
