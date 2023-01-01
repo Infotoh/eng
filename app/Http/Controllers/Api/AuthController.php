@@ -33,7 +33,7 @@ class AuthController extends Controller
             $data['user']  = new UserResource($user);
             $data['token'] = $user->createToken('my-app-token')->plainTextToken;
 
-            $user = User::find(auth()->id());
+            $user = User::find(auth('api')->id());
             $user->update(['device_token' => $request->device_token]);
             return response()->api($data);
 

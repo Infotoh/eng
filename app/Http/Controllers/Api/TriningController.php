@@ -16,6 +16,9 @@ class TriningController extends Controller
             'number' => ['required'],
             'name' => ['required'],
             'qualification' => ['required'],
+            'age' => 'required|numeric',
+            'number2' => 'required|numeric',
+            'gender_type' => 'required|in:male,female',
         ]);
 
         if ($validator->fails()) {

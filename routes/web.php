@@ -6,7 +6,7 @@ use App\Http\Controllers\Owner\WelcomController;
 Route::get('/', function (){
 
     if (!auth('admin')->check()) {
-            
+
         return redirect()->route('dashboard.login.index');
 
     }//end of if
@@ -14,3 +14,4 @@ Route::get('/', function (){
     return redirect()->route('dashboard.admin.welcome');
 
 });//end of
+

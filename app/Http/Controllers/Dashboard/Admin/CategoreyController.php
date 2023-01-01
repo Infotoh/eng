@@ -100,13 +100,16 @@ class CategoreyController extends Controller
             'comment' => 'required|string',
         ]);
 
-
-        $category->update($request->only('comment'));
-
-        if($category->user->device_token != null){
-            $token[0] = $category->user->device_token;
-            fcmTopic(trans('site.title'), $category->comment, $token);
+        if($category->comment == null){
+            $category->update($request->only('comment'));
+            if($category->user->device_token != null){
+                $token[0] = $category->user->device_token;
+                fcmTopic(trans('site.title'), $category->comment, $token);
+            }
+        }else{
+            $category->update($request->only('comment'));
         }
+
         session()->flash('success', __('site.updated_successfully'));
         return redirect()->back();
 
