@@ -29,11 +29,11 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('logout', [AuthController::class,'logout']);
     Route::get('notifications', [ConsultationController::class,'notifications']);
     Route::get('/categories', [ConsultationController::class, 'categories']);
+    Route::post('/Consultation', [ConsultationController::class, 'store']);
 });
 
 
 Route::post('/Trining', [TriningController::class, 'index']);
-Route::post('/Consultation', [ConsultationController::class, 'store']);
 Route::post('/user_update', [AuthController::class,'update_user']);
 Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
