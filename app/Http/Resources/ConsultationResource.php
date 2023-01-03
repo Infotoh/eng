@@ -22,6 +22,7 @@ class ConsultationResource extends JsonResource
             'consultion' => $this->consultion,
             'categoreys_id' => $this->categoreys_id,
             'comment' => $this->comment,
+            'date' => $this->date,
         ];
     }
 }
